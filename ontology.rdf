@@ -1,0 +1,505 @@
+@prefix : <https://www.swansea.ac.uk/law/aiandlawapplication/kuuku/gasoil2#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.w3.org/2002/07/owl#> .
+
+ 
+#TBox
+ 
+#classes
+:Activity rdf:type rdfs:Class.
+:ActivityRequiringALicense rdf:type rdfs:Class.
+:Unloading rdf:type rdfs:Class.
+:Structure rdf:type rdfs:Class.
+:Installation rdf:type rdfs:Class.
+:Pipeline rdf:type rdfs:Class.
+:License rdf:type rdfs:Class.
+:Area rdf:type rdfs:Class.
+:AreaOutsideTerritorialSea rdf:type rdfs:Class.
+:AreaInsideTerritorialSea rdf:type rdfs:Class.
+:GasImportationAndStorageZone rdf:type rdfs:Class.
+:ControlledPlace rdf:type rdfs:Class.
+:Gas rdf:type rdfs:Class.
+:GaseousCombustible rdf:type rdfs:Class.
+:StatutoryGas rdf:type rdfs:Class.
+:SubstanceDesignatedInOrderBySecretaryOfState rdf:type rdfs:Class.
+:GaseousMixture rdf:type rdfs:Class.
+:DepartmentOfTheGovernment rdf:type rdfs:Class.
+:Role rdf:type rdfs:Class.
+:SectorCompany rdf:type rdfs:Class.
+:Person rdf:type rdfs:Class.
+:LegalEntity rdf:type rdfs:Class.
+:LicenseWithConsentCondition rdf:type rdfs:Class.
+:LicenseWithoutConsentCondition rdf:type rdfs:Class.
+:LicenseWithConsentConditionWithAdditionalcondition   rdf:type rdfs:Class.
+:Contractor rdf:type rdfs:Class.
+:SubContractor rdf:type rdfs:Class.
+:Licensee rdf:type rdfs:Class.
+:Bank rdf:type rdfs:Class.
+:InternationalBank rdf:type rdfs:Class.
+:GhanaianBank rdf:type rdfs:Class.
+:LawFirm rdf:type rdfs:Class.
+:InternationalLawFirm rdf:type rdfs:Class.
+:GhanaianLawFirm rdf:type rdfs:Class.
+:Person rdf:type rdfs:Class.
+:Employee rdf:type rdfs:Class.
+:MiddleLevelEmployee rdf:type rdfs:Class.
+:JuniourLevelEmployee rdf:type rdfs:Class.
+:ManagementStaff rdf:type rdfs:Class.
+:TechnicalCoreStaff rdf:type rdfs:Class.
+:Nationality rdf:type rdfs:Class.
+
+
+#subclass relations
+:Person rdfs:subClassOf :LegalEntity.
+:Employee rdfs:subClassOf :Person.
+:MiddleLevelEmployee rdfs:subClassOf :Employee.
+:JuniourLevelEmployee rdfs:subClassOf :Employee.
+:ManagementStaff rdfs:subClassOf :Employee.
+:TechnicalCoreStaff rdfs:subClassOf :Employee.
+:Bank rdfs:subClassOf :LegalEntity.
+:LawFirm rdfs:subClassOf :LegalEntity.
+:InternationalBank rdfs:subClassOf :Bank.
+:GhanaianBank rdfs:subClassOf :Bank.
+:InternationalLawFirm rdfs:subClassOf :LawFirm.
+:GhanaianLawFirm rdfs:subClassOf :LawFirm.
+:Licensee rdfs:subClassOf :SectorCompany.
+:Contractor rdfs:subClassOf :SectorCompany.
+:SubContractor rdfs:subClassOf :Contractor.
+:Installation rdfs:subClassOf :Structure.
+:Pipeline rdfs:subClassOf :Structure.
+:AreaOutsideTerritorialSea rdfs:subClassOf :Area.
+:AreaInsideTerritorialSea rdfs:subClassOf :Area.
+:GasImportationAndStorageZone rdfs:subClassOf :AreaOutsideTerritorialSea.
+:ControlledPlace rdfs:subClassOf :Area.
+:LicenseWithConsentCondition rdfs:subClassOf :License.
+:LicenseWithoutConsentCondition rdfs:subClassOf :License.
+:LicenseWithConsentConditionWithAdditionalcondition   rdfs:subClassOf :LicenseWithConsentCondition.
+:GaseousCombustible rdfs:subClassOf :StatutoryGas.
+:SubstanceDesignatedInOrderBySecretaryOfState rdfs:subClassOf :StatutoryGas.
+:GaseousMixture rdfs:subClassOf :StatutoryGas.
+:Person rdfs:subClassOf :LegalEntity.
+:SectorCompany rdfs:subClassOf :LegalEntity.
+:ActivityRequiringALicense rdfs:subClassOf :Activity.
+:Unloading rdfs:subClassOf :ActivityRequiringALicense.
+
+#non-subclass relations between classes
+:Activity owl:disjointWith :License.
+:Activity owl:disjointWith :Structure.
+:Activity owl:disjointWith :Area.
+:Activity owl:disjointWith :Gas.
+:Activity owl:disjointWith :DepartmentOfTheGovernment.
+:Activity owl:disjointWith :Role.
+:Activity owl:disjointWith :LegalEntity.
+:Activity owl:disjointWith :StatutoryGas.
+:Activity owl:disjointWith :Nationality.
+:License owl:disjointWith :Area.
+:License owl:disjointWith :Structure.
+:License owl:disjointWith :Gas.
+:License owl:disjointWith :StatutoryGas.
+:License owl:disjointWith :DepartmentOfTheGovernment.
+:License owl:disjointWith :Role.
+:License owl:disjointWith :LegalEntity.
+:License owl:disjointWith :Nationality.
+:Area owl:disjointWith :Gas.
+:Area owl:disjointWith :Structure.
+:Area owl:disjointWith :StatutoryGas.
+:Area owl:disjointWith :DepartmentOfTheGovernment.
+:Area owl:disjointWith :Role.
+:Area owl:disjointWith :LegalEntity.
+:Area owl:disjointWith :Nationality.
+:Gas owl:disjointWith :DepartmentOfTheGovernment.
+:Gas owl:disjointWith :Structure.
+:Gas owl:disjointWith :Role.
+:Gas owl:disjointWith :LegalEntity.
+:Gas owl:disjointWith :Nationality.
+:DepartmentOfTheGovernment owl:disjointWith :Role.
+:DepartmentOfTheGovernment owl:disjointWith :Structure.
+:DepartmentOfTheGovernment owl:disjointWith :StatutoryGas.
+:DepartmentOfTheGovernment owl:disjointWith :LegalEntity.
+:DepartmentOfTheGovernment owl:disjointWith :Nationality.
+:Role owl:disjointWith :LegalEntity.
+:Role owl:disjointWith :Structure.
+:Role owl:disjointWith :StatutoryGas.
+:Role owl:disjointWith :Nationality.
+:StatutoryGas owl:disjointWith :LegalEntity.
+:StatutoryGas owl:disjointWith :Structure.
+:StatutoryGas owl:disjointWith :Nationality.
+:LegalEntity owl:disjointWith :Structure.
+:LegalEntity owl:disjointWith :Nationality.
+:Structure owl:disjointWith :Nationality.
+:LicenseWithConsentCondition owl:disjointWith :LicenseWithoutConsentCondition.
+:Person owl:disjointWith :SectorCompany.
+
+#properties
+:bank-with rdf:type owl:ObjectProperty.
+:bank-with rdfs:domain :SectorCompany.
+:bank-with rdfs:range :Bank.
+:hire-the-legal-service-of rdf:type owl:ObjectProperty.
+:hire-the-legal-service-of rdfs:domain :SectorCompany.
+:hire-the-legal-service-of rdfs:range :LawFirm.
+:employ rdf:type owl:ObjectProperty.
+:employ rdfs:domain :SectorCompany.
+:employ rdfs:range :Employee.
+:quantity rdf:type owl:DatatypeProperty.
+:quantity rdfs:domain :StatutoryGas.
+:quantity rdfs:range xsd:integer.
+:into rdf:type owl:ObjectProperty.
+:into rdfs:domain :Activity.
+:into rdfs:range :Structure.
+:consist-wholly-or-mainly-of rdf:type owl:ObjectProperty.
+:consist-wholly-or-mainly-of rdfs:domain :GaseousCombustible. 
+:consist-wholly-or-mainly-of rdfs:range :Gas.
+:belong-to rdf:type owl:ObjectProperty.
+:belong-to rdfs:domain :ControlledPlace.
+:belong-to rdfs:range :SectorCompany.
+:own rdf:type owl:ObjectProperty.
+:own rdfs:domain :SectorCompany.
+:own rdfs:range :ControlledPlace.
+:own owl:inverseOf :belong-to.
+
+:undertake rdf:type owl:ObjectProperty.
+:undertake rdfs:domain :SectorCompany.
+:undertake rdfs:range :Activity.
+:is-undertaken-by rdf:type owl:ObjectProperty.
+:is-undertaken-by rdfs:domain :Activity.
+:is-undertaken-by rdfs:range :SectorCompany.
+:undertake owl:inverseOf :is-undertaken-by.
+:work-with rdf:type owl:ObjectProperty.
+:work-with rdfs:domain :SectorCompany.
+:work-with rdfs:range :StatutoryGas.
+:has rdf:type owl:ObjectProperty.
+:has rdfs:domain :SectorCompany.
+:has rdfs:range :License.
+:cover rdf:type owl:ObjectProperty.
+:cover rdfs:domain :License.
+:cover rdfs:range :ControlledPlace.
+:issued-by rdf:type owl:ObjectProperty.
+:issued-by rdfs:domain :License.
+:issued-by rdfs:range :DepartmentOfTheGovernment.
+:issued-for rdf:type owl:ObjectProperty.
+:issued-for rdfs:domain :License.
+:issued-for rdfs:range :Activity.
+:issued-to rdf:type owl:ObjectProperty.
+:issued-to rdfs:domain :License.
+:issued-to rdfs:range :SectorCompany.
+:has-permission-for  rdf:type owl:ObjectProperty.
+:has-permission-for rdfs:domain :SectorCompany.
+:has-permission-for rdfs:range :Activity.
+:give-permission-to rdf:type owl:ObjectProperty.
+:give-permission-to rdfs:domain :SectorCompany.
+:give-permission-to rdfs:range :SectorCompany.
+:work-at rdf:type owl:ObjectProperty.
+:work-at rdfs:domain :SectorCompany.
+:work-at rdfs:range :ControlledPlace.
+:is rdf:type owl:ObjectProperty.
+:is rdfs:domain :Person.
+:is rdfs:range :Nationality.
+:play-the-role-of rdf:type owl:ObjectProperty.
+:play-the-role-of rdfs:domain :Person.
+:play-the-role-of rdfs:range :Role.
+:lead-role-of rdf:type owl:ObjectProperty.
+:lead-role-of rdfs:domain :Role.
+:lead-role-of rdfs:range :DepartmentOfTheGovernment.
+
+#Restrictions
+#Every company can undertake at most 10 activities (we assume there is a legal constraint that puts a cap on the max number of activities a company can have)
+:SectorCompany rdfs:subClassOf [
+rdf:type owl:Restriction;
+owl:onProperty :undertake;
+owl:onClass :Activity;
+owl:maxQualifiedCardinality "10"^^xsd:nonNegativeInteger;
+].
+
+#every sector company can only undertake activities
+:SectorCompany rdfs:subClassOf [
+rdf:type owl:Restriction;
+owl:onProperty :undertake;
+owl:allValuesFrom :Activity;
+].
+
+:Activity rdfs:subClassOf [
+rdf:type owl:Restriction;
+owl:onProperty :is-undertaken-by;
+owl:onClass :SectorCompany;
+owl:minCardinality "1"^^xsd:nonNegativeInteger;
+].
+
+:License rdfs:subClassOf [
+rdf:type owl:Restriction;
+owl:onProperty :cover;
+owl:onClass :ControlledPlace;
+owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+].
+
+:License rdfs:subClassOf [
+rdf:type owl:Restriction;
+owl:onProperty :issued-to;
+owl:onClass :SectorCompany;
+owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+].
+
+
+:License rdfs:subClassOf [
+rdf:type owl:Restriction;
+owl:onProperty :issued-for;
+owl:onClass :Activity;
+owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+].
+
+#Now we want to characterize the set of companies that undertake at least one activity. These are those that are issued at least one license. We can this set ActiveSectorCompany
+:ActiveSectorCompany rdf:type rdfs:Class.
+:ActiveSectorCompany rdfs:subClassOf :SectorCompany.
+
+#every ActiveSectorCompany undertake at least one activity.
+:ActiveSectorCompany rdfs:subClassOf [
+rdf:type owl:Restriction;
+owl:onProperty :undertake;
+owl:onClass :Activity;
+owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger;
+].
+
+#every ActiveSectorCompany only undertakes activities requiring a license.
+:ActiveSectorCompany rdfs:subClassOf [
+rdf:type owl:Restriction;
+owl:onProperty :undertake;
+owl:allValuesFrom :ActivityRequiringALicense;
+].
+
+
+#every active sector company either has exactly a licence or it has permission for exactly one activity.
+:ActiveSectorCompany rdfs:subClassOf 
+[
+owl:unionOf(
+[
+rdf:type owl:Restriction;
+owl:onProperty :has;
+owl:onClass :License;
+owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+] 
+[
+rdf:type owl:Restriction;
+owl:onProperty :has-permission-for;
+owl:onClass :Activity;
+owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger;
+]
+)
+].
+
+:companyc :undertake :ul2.
+:ul1 owl:differentFrom :ul2.
+
+#ABox
+#individuals.
+:ghanaian rdf:type :Nationality.
+:italian rdf:type :Nationality.
+:american rdf:type :Nationality.
+:welsh rdf:type :Nationality.
+:ecobank rdf:type :GhanaianBank.
+:adb rdf:type :GhanaianBank.
+:gcb rdf:type :GhanaianBank.
+:lloydsbank rdf:type :InternationalBank.
+:chasebank rdf:type :InternationalBank.
+:dnaandpartner rdf:type :GhanaianLawFirm.
+:kuukuandassociate rdf:type :GhanaianLawFirm.
+:robaldobarazawynerandpartner rdf:type :InternationalLawFirm.
+:kofikyere rdf:type :JuniourLevelEmployee.
+:nanayeboahagyei rdf:type :JuniourLevelEmployee.
+:alhajjiisah rdf:type :JuniourLevelEmployee.
+:mawukoakpagbili rdf:type :JuniourLevelEmployee.
+:niiayitey rdf:type :JuniourLevelEmployee.
+:nhirabasapon rdf:type :JuniourLevelEmployee.
+:kwamegyan rdf:type :JuniourLevelEmployee.
+:niikortey rdf:type :JuniourLevelEmployee.
+:mawusidziraam rdf:type :JuniourLevelEmployee.
+:yakubuisaka rdf:type :JuniourLevelEmployee.
+:johnsmith rdf:type :JuniourLevelEmployee.
+:jamesfreeman rdf:type :JuniourLevelEmployee.
+:charlsehermingway rdf:type :JuniourLevelEmployee.
+:stonebarrington rdf:type :JuniourLevelEmployee.
+:dinnobachetti rdf:type :JuniourLevelEmployee.
+:amaasantewaa rdf:type :MiddleLevelEmployee.
+:akosuaakaan rdf:type :MiddleLevelEmployee.
+:yaaowusua rdf:type :MiddleLevelEmployee.
+:akweleaddo rdf:type :MiddleLevelEmployee.
+:fatimaisahaku rdf:type :MiddleLevelEmployee.
+:akushika rdf:type :MiddleLevelEmployee.
+:esinamablogah rdf:type :MiddleLevelEmployee.
+:princesslinsay rdf:type :MiddleLevelEmployee.
+:dinahhamilton rdf:type :MiddleLevelEmployee.
+:mariandazy rdf:type :MiddleLevelEmployee.
+:ayimensah rdf:type :TechnicalCoreStaff.
+:yaamansa rdf:type :TechnicalCoreStaff.
+:abenadepa rdf:type :TechnicalCoreStaff.
+:efiaaddobea rdf:type :TechnicalCoreStaff.
+:korkorlartey rdf:type :TechnicalCoreStaff.
+:lamisiatupare rdf:type :TechnicalCoreStaff.
+:enwonamayiram rdf:type :TechnicalCoreStaff.
+:dannielwhite rdf:type :TechnicalCoreStaff.
+:amandablack rdf:type :TechnicalCoreStaff.
+:paulgreenfield rdf:type :TechnicalCoreStaff.
+:kofifianko rdf:type :ManagementStaff.
+:kuukuanim rdf:type :ManagementStaff.
+:kwameanim rdf:type :ManagementStaff.
+:kwameoffei rdf:type :ManagementStaff.
+:yaaadubea rdf:type :ManagementStaff.
+:efuafikobea rdf:type :ManagementStaff.
+:akuaaanima rdf:type :ManagementStaff.
+:nanahemaa rdf:type :ManagementStaff.
+:amadarkoaa rdf:type :ManagementStaff.
+:kwekuadu rdf:type :ManagementStaff.
+:liviorobaldo rdf:type :ManagementStaff.
+:adamwyner rdf:type :ManagementStaff.
+:stefanobaraza rdf:type :ManagementStaff.
+:danbrown rdf:type :ManagementStaff.
+:davidbaldacci rdf:type :ManagementStaff.
+:albusdambledor rdf:type :ManagementStaff.
+:kofikyere :is :ghanaian.
+:nanayeboahagyei :is :ghanaian.
+:alhajjiisah :is :ghanaian.
+:mawukoakpagbili :is :ghanaian.
+:niiayitey :is :ghanaian.
+:nhirabasapon :is :ghanaian.
+:kwamegyan :is :ghanaian.
+:niikortey :is :ghanaian.
+:mawusidziraam :is :ghanain.
+:yakubuisaka :is :ghanaian.
+:johnsmith :is :american.
+:jamesfreeman :is :welsh.
+:charlsehermingway :is :italian.
+:stonebarrington :is :american.
+:dinnobachetti :is :italian.
+:amaasantewaa :is :ghanaian.
+:akosuaakaan :is :ghanaian.
+:yaaowusua :is :ghanaian.
+:akweleaddo :is :ghanaian.
+:fatimaisahaku :is :ghanaian.
+:akushika :is :ghanaian.
+:esinamablogah :is :ghanaian.
+:princesslinsay :is :welsh.
+:dinahhamilton :is :american.
+:mariandazy :is :italian.
+:ayimensah :is :ghanaian.
+:yaamansa :is :ghanaian.
+:abenadepa :is :ghanaian.
+:efiaaddobea :is :ghanaian.
+:korkorlartey :is :ghanaian.
+:lamisiatupare :is :ghanaian.
+:enwonamayiram :is :ghanaian.
+:dannielwhite :is :welsh.
+:amandablack :is :italian.
+:paulgreenfield :is :american.
+:kofifianko :is :ghanaian.
+:kuukuanim :is :ghanaian.
+:kwameanim :is :ghanaian.
+:kwameoffei :is :ghanaian.
+:yaaadubea :is :ghanaian.
+:efuafikobea :is :ghanaian.
+:akuaaanima :is :ghanaian.
+:nanahemaa :is :ghanaian.
+:amadarkoaa :is :ghanaian.
+:kwekuadu :is :ghanaian.
+:liviorobaldo :is :italian.
+:adamwyner :is :american.
+:stefanobaraza :is :italian.
+:danbrown :is :american.
+:davidbaldacci :is :italian.
+:albusdambledor  :is :welsh.
+:i1 rdf:type :Installation.
+:p1 rdf:type :Pipeline.
+:methane rdf:type :Gas.
+:ethane rdf:type :Gas. 
+:propane rdf:type :Gas.
+:butane rdf:type :Gas. 
+:homeoffice rdf:type :DepartmentOfTheGovernment.
+:secretaryOfState rdf:type :Role.
+:secretaryOfState :lead-role-of :homeoffice.
+:companyc rdf:type :SectorCompany.
+:companyd rdf:type :SectorCompany.
+:companye rdf:type :SectorCompany.
+:cp1 rdf:type :ControlledPlace.
+:ul1 rdf:type :Unloading.
+:ul2 rdf:type :Unloading.
+:butadiene rdf:type :GaseousCombustible.
+:butadiene :consist-wholly-or-mainly-of :butane.
+:butadiene :quantity "100000"^^xsd:int.
+:licensec rdf:type :LicenseWithoutConsentCondition.
+:cp1 :belong-to :companyc.
+:companyc :undertake :ul1.
+:ul1 :into :i1.
+:companyc :work-with :butadiene.
+:companyc :has :licensec.
+:licensec :cover :cp1.
+:licensec :issued-by  :homeoffice.
+:licensec :issued-for :ul1.
+:licensec :issued-to :companyc.
+:companyd :has-permission-for :ul2.
+:companyd :undertake :ul2.
+:companyd :work-with :butadiene.
+:companyd :work-at :cp1.
+:ul2 :into :p1.
+:companyc :give-permission-to :companyd.
+
+
+:companyc :employ :kofikyere.
+:companyc :employ :nanayeboahagyei.
+:companyc :employ :alhajjiisah.
+:companyc :employ :mawukoakpagbili.
+:companyc :employ :niiayitey.
+:companyc :employ :amaasantewaa.
+:companyc :employ :akosuaakaan.
+:companyc :employ :yaaowusua.
+:companyc :employ :ayimensah.
+:companyc :employ :yaamansa.
+:companyc :employ :abenadepa.
+:companyc :employ :efiaaddobea.
+:companyc :employ :kofifianko .
+:companyc :employ :kuukuanim.
+:companyc :employ :kwameanim.
+:companyc :employ :kwameoffei.
+:companyc :employ :yaaadubea.
+:companyc :employ :efuafikobea.
+:companyc :bank-with :gcb.
+:companyc :hire-the-legal-service-of :kuukuandassociate.
+
+:companyd :employ :kwamegyan.
+:companyd :employ :niikortey.
+:companyd :employ :mawusidziraam.
+:companyd :employ :yakubuisaka.
+:companyd :employ :nhirabasapon.
+:companyd :employ :johnsmith.
+:companyd :employ :akweleaddo.
+:companyd :employ :fatimaisahaku.
+:companyd :employ :akushika.
+:companyd :employ :esinamablogah.
+:companyd :employ :princesslinsay.
+:companyd :employ :korkorlartey.
+:companyd :employ :lamisiatupare.
+:companyd :employ :enwonamayiram.
+:companyd :employ :dannielwhite.
+:companyd :employ :akuaaanima.
+:companyd :employ :nanahemaa.
+:companyd :employ :amadarkoaa.
+:companyd :employ :kwekuadu.
+:companyd :employ :liviorobaldo.
+:companyd :employ :adamwyner .
+:companyd :bank-with :adb.
+:companyd :hire-the-legal-service-of :dnaandpartner.
+
+:companye :employ :jamesfreeman.
+:companye :employ :charlsehermingway.
+:companye :employ :stonebarrington.
+:companye :employ :dinnobachetti.
+:companye :employ :dinahhamilton.
+:companye :employ :mariandazy.
+:companye :employ :amandablack.
+:companye :employ :paulgreenfield.
+:companye :employ :stefanobaraza.
+:companye :employ :danbrown.
+:companye :employ :davidbaldacci.
+:companye :employ :albusdambledor.
+:companye :bank-with :lloydsbank.
+:companye :hire-the-legal-service-of :robaldobarazawynerandpartner.

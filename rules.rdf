@@ -1,0 +1,834 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix : <https://www.swansea.ac.uk/law/aiandlawapplication/kuuku/gasoil2#>.
+
+:allRules rdf:type sh:NodeShape;
+#creating a class of compliant sector company where all sector companies has a license to undertake their activity on the designated lots.
+sh:rule[ rdf:type sh:SPARQLRule; sh:order 0;
+sh:prefixes[sh:declare 
+[sh:prefix"rdf";sh:namespace"http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI],
+[sh:prefix"rdfs";sh:namespace"http://www.w3.org/2000/01/rdf-schema#"^^xsd:anyURI],
+[sh:prefix"owl";sh:namespace"http://www.w3.org/2002/07/owl#"^^xsd:anyURI],
+[sh:prefix"xsd";sh:namespace"http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI],
+[sh:prefix"";sh:namespace"https://www.swansea.ac.uk/law/aiandlawapplication/kuuku/gasoil2#"^^xsd:anyURI]];
+sh:construct """
+CONSTRUCT 
+{
+:EnergyActComplantSectorCompany rdf:type rdfs:Class.
+:EnergyActComplantSectorCompany rdfs:subClassOf :SectorCompany.
+?x rdf:type :EnergyActComplantSectorCompany.
+}
+WHERE 
+{
+{
+?x :has ?y.
+?y :cover ?z.
+?y :issued-for ?a.
+}
+UNION
+{
+?x :has-permission-for ?b.
+}
+}
+""";
+];
+	
+sh:targetClass rdfs:Class.
+
+
+
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix : <https://www.swansea.ac.uk/law/aiandlawapplication/kuuku/gasoil2#>.
+
+:allRules rdf:type sh:NodeShape;
+#return all sector companies which hire the services of a ghanaian lawfirm as local content compliant sector company.
+sh:rule[ rdf:type sh:SPARQLRule; sh:order 1;
+sh:prefixes[sh:declare 
+[sh:prefix"rdf";sh:namespace"http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI],
+[sh:prefix"rdfs";sh:namespace"http://www.w3.org/2000/01/rdf-schema#"^^xsd:anyURI],
+[sh:prefix"owl";sh:namespace"http://www.w3.org/2002/07/owl#"^^xsd:anyURI],
+[sh:prefix"xsd";sh:namespace"http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI],
+[sh:prefix"";sh:namespace"https://www.swansea.ac.uk/law/aiandlawapplication/kuuku/gasoil2#"^^xsd:anyURI]];
+sh:construct """
+CONSTRUCT 
+{
+:LFLCCompliantSectorCompany rdf:type rdfs:Class.
+:LFLCCompliantSectorCompany rdfs:subClassOf :SectorCompany.
+?x rdf:type :LFLCCompliantSectorCompany.
+}
+WHERE 
+{
+?x :hire-the-legal-service-of ?y.
+?y rdf:type :GhanaianLawFirm.
+}
+""";
+];
+	
+sh:targetClass rdfs:Class.
+
+
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix : <https://www.swansea.ac.uk/law/aiandlawapplication/kuuku/gasoil2#>.
+
+:allRules rdf:type sh:NodeShape;
+#return all sector companies which hire the services of an international lawfirm as local content non-compliant sector company.
+sh:rule[ rdf:type sh:SPARQLRule; sh:order 2;
+sh:prefixes[sh:declare 
+[sh:prefix"rdf";sh:namespace"http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI],
+[sh:prefix"rdfs";sh:namespace"http://www.w3.org/2000/01/rdf-schema#"^^xsd:anyURI],
+[sh:prefix"owl";sh:namespace"http://www.w3.org/2002/07/owl#"^^xsd:anyURI],
+[sh:prefix"xsd";sh:namespace"http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI],
+[sh:prefix"";sh:namespace"https://www.swansea.ac.uk/law/aiandlawapplication/kuuku/gasoil2#"^^xsd:anyURI]];
+sh:construct """
+CONSTRUCT 
+{
+:LFLCNonCompliantSectorCompany rdf:type rdfs:Class.
+:LFLCNonCompliantSectorCompany rdfs:subClassOf :SectorCompany.
+?x rdf:type :LFLCNonCompliantSectorCompany.
+}
+WHERE 
+{
+?x :hire-the-legal-service-of ?y.
+?y rdf:type :InternationalLawFirm.
+}
+""";
+];
+	
+sh:targetClass rdfs:Class.
+
+
+
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix : <https://www.swansea.ac.uk/law/aiandlawapplication/kuuku/gasoil2#>.
+
+:allRules rdf:type sh:NodeShape;
+#return all sector companies which bank with a ghanaian bank as local content compliant sector company.
+sh:rule[ rdf:type sh:SPARQLRule; sh:order 3;
+sh:prefixes[sh:declare 
+[sh:prefix"rdf";sh:namespace"http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI],
+[sh:prefix"rdfs";sh:namespace"http://www.w3.org/2000/01/rdf-schema#"^^xsd:anyURI],
+[sh:prefix"owl";sh:namespace"http://www.w3.org/2002/07/owl#"^^xsd:anyURI],
+[sh:prefix"xsd";sh:namespace"http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI],
+[sh:prefix"";sh:namespace"https://www.swansea.ac.uk/law/aiandlawapplication/kuuku/gasoil2#"^^xsd:anyURI]];
+sh:construct """
+CONSTRUCT 
+{
+:BLCCompliantSectorCompany rdf:type rdfs:Class.
+:BLCCompliantSectorCompany rdfs:subClassOf :SectorCompany.
+?x rdf:type :BLCCompliantSectorCompany.
+}
+WHERE 
+{
+?x :bank-with ?y.
+?y rdf:type :GhanaianBank.
+}
+""";
+];
+	
+sh:targetClass rdfs:Class.
+
+
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix : <https://www.swansea.ac.uk/law/aiandlawapplication/kuuku/gasoil2#>.
+
+:allRules rdf:type sh:NodeShape;
+#return all sector companies which bank with an international bank as local content non-compliant sector company.
+sh:rule[ rdf:type sh:SPARQLRule; sh:order 4;
+sh:prefixes[sh:declare 
+[sh:prefix"rdf";sh:namespace"http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI],
+[sh:prefix"rdfs";sh:namespace"http://www.w3.org/2000/01/rdf-schema#"^^xsd:anyURI],
+[sh:prefix"owl";sh:namespace"http://www.w3.org/2002/07/owl#"^^xsd:anyURI],
+[sh:prefix"xsd";sh:namespace"http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI],
+[sh:prefix"";sh:namespace"https://www.swansea.ac.uk/law/aiandlawapplication/kuuku/gasoil2#"^^xsd:anyURI]];
+sh:construct """
+CONSTRUCT 
+{
+:BLCNonCompliantSectorCompany rdf:type rdfs:Class.
+:BLCNonCompliantSectorCompany rdfs:subClassOf :SectorCompany.
+?x rdf:type :BLCNonCompliantSectorCompany.
+}
+WHERE 
+{
+?x :bank-with ?y.
+?y rdf:type :InternationalBank.
+}
+""";
+];
+	
+sh:targetClass rdfs:Class.
+
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix : <https://www.swansea.ac.uk/law/aiandlawapplication/kuuku/gasoil2#>.
+
+:allRules rdf:type sh:NodeShape;
+#all individuals of a subclass are all individuals of its superclass.
+sh:rule[ rdf:type sh:SPARQLRule; sh:order 5;
+sh:prefixes[sh:declare 
+[sh:prefix"rdf";sh:namespace"http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI],
+[sh:prefix"rdfs";sh:namespace"http://www.w3.org/2000/01/rdf-schema#"^^xsd:anyURI],
+[sh:prefix"owl";sh:namespace"http://www.w3.org/2002/07/owl#"^^xsd:anyURI],
+[sh:prefix"xsd";sh:namespace"http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI],
+[sh:prefix"";sh:namespace"https://www.swansea.ac.uk/law/aiandlawapplication/kuuku/gasoil2#"^^xsd:anyURI]];
+sh:construct """
+CONSTRUCT 
+{
+?x rdf:type ?z.
+}
+WHERE 
+{
+?x rdf:type ?y.
+?y rdfs:subClassOf ?z.
+?z rdf:type rdfs:Class.
+}
+""";
+];
+	
+sh:targetClass rdfs:Class.
+
+
+
+
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix : <https://www.swansea.ac.uk/law/aiandlawapplication/kuuku/gasoil2#>.
+
+:allRules rdf:type sh:NodeShape;
+#all individuals of a subclass are all individuals of its superclass.
+sh:rule[ rdf:type sh:SPARQLRule; sh:order 5;
+sh:prefixes[sh:declare 
+[sh:prefix"rdf";sh:namespace"http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI],
+[sh:prefix"rdfs";sh:namespace"http://www.w3.org/2000/01/rdf-schema#"^^xsd:anyURI],
+[sh:prefix"owl";sh:namespace"http://www.w3.org/2002/07/owl#"^^xsd:anyURI],
+[sh:prefix"xsd";sh:namespace"http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI],
+[sh:prefix"";sh:namespace"https://www.swansea.ac.uk/law/aiandlawapplication/kuuku/gasoil2#"^^xsd:anyURI]];
+sh:construct """
+CONSTRUCT 
+{
+?x rdf:type ?z.
+}
+WHERE 
+{
+?x rdf:type ?y.
+?y rdfs:subClassOf ?z.
+?z rdf:type rdfs:Class.
+}
+""";
+];
+	
+sh:targetClass rdfs:Class.
+
+
+
+
+
+
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix : <https://www.swansea.ac.uk/law/aiandlawapplication/kuuku/gasoil2#>.
+
+:allRules rdf:type sh:NodeShape;
+#execute the inverse of all disjoint relationship.
+sh:rule[ rdf:type sh:SPARQLRule; sh:order 6;
+sh:prefixes[sh:declare 
+[sh:prefix"rdf";sh:namespace"http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI],
+[sh:prefix"rdfs";sh:namespace"http://www.w3.org/2000/01/rdf-schema#"^^xsd:anyURI],
+[sh:prefix"owl";sh:namespace"http://www.w3.org/2002/07/owl#"^^xsd:anyURI],
+[sh:prefix"xsd";sh:namespace"http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI],
+[sh:prefix"";sh:namespace"https://www.swansea.ac.uk/law/aiandlawapplication/kuuku/gasoil2#"^^xsd:anyURI]];
+sh:construct """
+CONSTRUCT 
+{
+?y owl:disjointWith ?x.
+}
+WHERE 
+{
+?x owl:disjointWith ?y.
+}
+""";
+];
+	
+sh:targetClass rdfs:Class.
+
+
+#for management staff.
+
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix : <https://www.swansea.ac.uk/law/aiandlawapplication/kuuku/gasoil2#>.
+
+:allRules rdf:type sh:NodeShape;
+#find the number of ghanaian employees who are management staff and associate them with the company with a new relation ":gh_man_emp"
+sh:rule[ rdf:type sh:SPARQLRule; sh:order 0;
+sh:prefixes[sh:declare 
+[sh:prefix"rdf";sh:namespace"http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI],
+[sh:prefix"rdfs";sh:namespace"http://www.w3.org/2000/01/rdf-schema#"^^xsd:anyURI],
+[sh:prefix"owl";sh:namespace"http://www.w3.org/2002/07/owl#"^^xsd:anyURI],
+[sh:prefix"xsd";sh:namespace"http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI],
+[sh:prefix"";sh:namespace"https://www.swansea.ac.uk/law/aiandlawapplication/kuuku/gasoil2#"^^xsd:anyURI]];
+sh:construct """
+CONSTRUCT 
+{
+?x :gh_man_emp ?gh_man_emp.
+}
+{
+SELECT ?x (count(?y) as ?gh_man_emp)
+WHERE
+{
+?x rdf:type :SectorCompany.
+?x :employ ?y.
+?y rdf:type :ManagementStaff.
+?y :is :ghanaian.
+}
+GROUP BY ?x
+}
+""";
+];
+#the rule is similar to the above, but it finds the total number of employees who are management staff regardless of their nationality. It associate them with the company through the :man_emp relation.
+sh:rule[ rdf:type sh:SPARQLRule; sh:order 0;
+sh:prefixes[sh:declare 
+[sh:prefix"rdf";sh:namespace"http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI],
+[sh:prefix"rdfs";sh:namespace"http://www.w3.org/2000/01/rdf-schema#"^^xsd:anyURI],
+[sh:prefix"owl";sh:namespace"http://www.w3.org/2002/07/owl#"^^xsd:anyURI],
+[sh:prefix"xsd";sh:namespace"http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI],
+[sh:prefix"";sh:namespace"https://www.swansea.ac.uk/law/aiandlawapplication/kuuku/gasoil2#"^^xsd:anyURI]];
+sh:construct """
+CONSTRUCT 
+{
+?x :man_emp ?man_emp.
+}
+{
+SELECT ?x (count(?y) as ?man_emp)
+WHERE
+{
+?x rdf:type :SectorCompany.
+?x :employ ?y.
+?y rdf:type :ManagementStaff.
+}
+GROUP BY ?x
+}
+""";
+];
+#if there are companies not associated with any number via :gh_man_emp, this rule associate them with zero (note that sh:order is 1 while for the previous rules it was 0)
+sh:rule[ rdf:type sh:SPARQLRule; sh:order 1;
+sh:prefixes[sh:declare 
+[sh:prefix"rdf";sh:namespace"http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI],
+[sh:prefix"rdfs";sh:namespace"http://www.w3.org/2000/01/rdf-schema#"^^xsd:anyURI],
+[sh:prefix"owl";sh:namespace"http://www.w3.org/2002/07/owl#"^^xsd:anyURI],
+[sh:prefix"xsd";sh:namespace"http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI],
+[sh:prefix"";sh:namespace"https://www.swansea.ac.uk/law/aiandlawapplication/kuuku/gasoil2#"^^xsd:anyURI]];
+sh:construct """
+CONSTRUCT 
+{
+?x :gh_man_emp 0.
+}
+WHERE
+{
+?x rdf:type :SectorCompany.
+NOT EXISTS{?x :gh_man_emp ?y}.
+}
+""";
+];
+#all companies which number of employees who are management staff from Ghana is inferior to 30 % of the total number of employees who are management staff are "nc_gh_man_emp" (note that sh:order of this rule is 2)
+sh:rule[ rdf:type sh:SPARQLRule; sh:order 2;
+sh:prefixes[sh:declare 
+[sh:prefix"rdf";sh:namespace"http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI],
+[sh:prefix"rdfs";sh:namespace"http://www.w3.org/2000/01/rdf-schema#"^^xsd:anyURI],
+[sh:prefix"owl";sh:namespace"http://www.w3.org/2002/07/owl#"^^xsd:anyURI],
+[sh:prefix"xsd";sh:namespace"http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI],
+[sh:prefix"";sh:namespace"https://www.swansea.ac.uk/law/aiandlawapplication/kuuku/gasoil2#"^^xsd:anyURI]];
+sh:construct """
+CONSTRUCT 
+{
+?x rdf:type :Nc_Gh_Man_Emp.
+}
+WHERE
+{
+?x rdf:type :SectorCompany.
+?x :gh_man_emp ?gh_man_emp.
+?x :man_emp ?man_emp.
+FILTER(?gh_man_emp<(?man_emp*0.3)).
+}
+""";
+];
+#all companies which number of employees who are management staff from Ghana is greater or equal to 30 % of the total number of employees who are management staff are "c_gh_man_emp" (note that sh:order of this rule is 3)
+sh:rule[ rdf:type sh:SPARQLRule; sh:order 3;
+sh:prefixes[sh:declare 
+[sh:prefix"rdf";sh:namespace"http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI],
+[sh:prefix"rdfs";sh:namespace"http://www.w3.org/2000/01/rdf-schema#"^^xsd:anyURI],
+[sh:prefix"owl";sh:namespace"http://www.w3.org/2002/07/owl#"^^xsd:anyURI],
+[sh:prefix"xsd";sh:namespace"http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI],
+[sh:prefix"";sh:namespace"https://www.swansea.ac.uk/law/aiandlawapplication/kuuku/gasoil2#"^^xsd:anyURI]];
+sh:construct """
+CONSTRUCT 
+{
+?x rdf:type :C_Gh_Man_Emp.
+}
+WHERE
+{
+?x rdf:type :SectorCompany.
+?x :gh_man_emp ?gh_man_emp.
+?x :man_emp ?man_emp.
+FILTER(?gh_man_emp>=(?man_emp*0.3)).
+}
+""";
+];
+
+sh:targetClass rdfs:Class.
+
+#for technical core staff.
+
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix : <https://www.swansea.ac.uk/law/aiandlawapplication/kuuku/gasoil2#>.
+
+:allRules rdf:type sh:NodeShape;
+#find the number of ghanaian employees who are technical core staff and associate them with the company with a new relation ":gh_tec_emp"
+sh:rule[ rdf:type sh:SPARQLRule; sh:order 0;
+sh:prefixes[sh:declare 
+[sh:prefix"rdf";sh:namespace"http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI],
+[sh:prefix"rdfs";sh:namespace"http://www.w3.org/2000/01/rdf-schema#"^^xsd:anyURI],
+[sh:prefix"owl";sh:namespace"http://www.w3.org/2002/07/owl#"^^xsd:anyURI],
+[sh:prefix"xsd";sh:namespace"http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI],
+[sh:prefix"";sh:namespace"https://www.swansea.ac.uk/law/aiandlawapplication/kuuku/gasoil2#"^^xsd:anyURI]];
+sh:construct """
+CONSTRUCT 
+{
+?x :gh_tec_emp ?gh_tec_emp.
+}
+{
+SELECT ?x (count(?y) as ?gh_tec_emp)
+WHERE
+{
+?x rdf:type :SectorCompany.
+?x :employ ?y.
+?y rdf:type :TechnicalCoreStaff.
+?y :is :ghanaian.
+}
+GROUP BY ?x
+}
+""";
+];
+#the rule is similar to the above, but it finds the total number of employees who are technical core staff regardless of their nationality. It associate them with the company through the :tec_emp relation.
+sh:rule[ rdf:type sh:SPARQLRule; sh:order 0;
+sh:prefixes[sh:declare 
+[sh:prefix"rdf";sh:namespace"http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI],
+[sh:prefix"rdfs";sh:namespace"http://www.w3.org/2000/01/rdf-schema#"^^xsd:anyURI],
+[sh:prefix"owl";sh:namespace"http://www.w3.org/2002/07/owl#"^^xsd:anyURI],
+[sh:prefix"xsd";sh:namespace"http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI],
+[sh:prefix"";sh:namespace"https://www.swansea.ac.uk/law/aiandlawapplication/kuuku/gasoil2#"^^xsd:anyURI]];
+sh:construct """
+CONSTRUCT 
+{
+?x :tec_emp ?tec_emp.
+}
+{
+SELECT ?x (count(?y) as ?tec_emp)
+WHERE
+{
+?x rdf:type :SectorCompany.
+?x :employ ?y.
+?y rdf:type :TechnicalCoreStaff.
+}
+GROUP BY ?x
+}
+""";
+];
+#if there are companies not associated with any number via :gh_tec_emp, this rule associate them with zero (note that sh:order is 1 while for the previous rules it was 0)
+sh:rule[ rdf:type sh:SPARQLRule; sh:order 1;
+sh:prefixes[sh:declare 
+[sh:prefix"rdf";sh:namespace"http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI],
+[sh:prefix"rdfs";sh:namespace"http://www.w3.org/2000/01/rdf-schema#"^^xsd:anyURI],
+[sh:prefix"owl";sh:namespace"http://www.w3.org/2002/07/owl#"^^xsd:anyURI],
+[sh:prefix"xsd";sh:namespace"http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI],
+[sh:prefix"";sh:namespace"https://www.swansea.ac.uk/law/aiandlawapplication/kuuku/gasoil2#"^^xsd:anyURI]];
+sh:construct """
+CONSTRUCT 
+{
+?x :gh_tec_emp 0.
+}
+WHERE
+{
+?x rdf:type :SectorCompany.
+NOT EXISTS{?x :gh_tec_emp ?y}.
+}
+""";
+];
+#all companies which number of employees who are technical core staff from Ghana is inferior to 20 % of the total number of employees who are technical core staff are "nc_gh_tec_emp" (note that sh:order of this rule is 2)
+sh:rule[ rdf:type sh:SPARQLRule; sh:order 2;
+sh:prefixes[sh:declare 
+[sh:prefix"rdf";sh:namespace"http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI],
+[sh:prefix"rdfs";sh:namespace"http://www.w3.org/2000/01/rdf-schema#"^^xsd:anyURI],
+[sh:prefix"owl";sh:namespace"http://www.w3.org/2002/07/owl#"^^xsd:anyURI],
+[sh:prefix"xsd";sh:namespace"http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI],
+[sh:prefix"";sh:namespace"https://www.swansea.ac.uk/law/aiandlawapplication/kuuku/gasoil2#"^^xsd:anyURI]];
+sh:construct """
+CONSTRUCT 
+{
+?x rdf:type :Nc_Gh_Tec_Emp.
+}
+WHERE
+{
+?x rdf:type :SectorCompany.
+?x :gh_tec_emp ?gh_tec_emp.
+?x :tec_emp ?tec_emp.
+FILTER(?gh_tec_emp<(?tec_emp*0.2)).
+}
+""";
+];
+#all companies which number of employees who are technical core staff from Ghana is greater or equal to 20 % of the total number of employees who are technical core staff are "c_gh_tec_emp" (note that sh:order of this rule is 3)
+sh:rule[ rdf:type sh:SPARQLRule; sh:order 3;
+sh:prefixes[sh:declare 
+[sh:prefix"rdf";sh:namespace"http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI],
+[sh:prefix"rdfs";sh:namespace"http://www.w3.org/2000/01/rdf-schema#"^^xsd:anyURI],
+[sh:prefix"owl";sh:namespace"http://www.w3.org/2002/07/owl#"^^xsd:anyURI],
+[sh:prefix"xsd";sh:namespace"http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI],
+[sh:prefix"";sh:namespace"https://www.swansea.ac.uk/law/aiandlawapplication/kuuku/gasoil2#"^^xsd:anyURI]];
+sh:construct """
+CONSTRUCT 
+{
+?x rdf:type :C_Gh_Tec_Emp.
+}
+WHERE
+{
+?x rdf:type :SectorCompany.
+?x :gh_tec_emp ?gh_tec_emp.
+?x :tec_emp ?tec_emp.
+FILTER(?gh_tec_emp>=(?tec_emp*0.2)).
+}
+""";
+];
+
+sh:targetClass rdfs:Class.
+
+#for mid level staff.
+
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix : <https://www.swansea.ac.uk/law/aiandlawapplication/kuuku/gasoil2#>.
+
+:allRules rdf:type sh:NodeShape;
+#find the number of ghanaian employees who are middle level staff and associate them with the company with a new relation ":gh_ml_emp"
+sh:rule[ rdf:type sh:SPARQLRule; sh:order 0;
+sh:prefixes[sh:declare 
+[sh:prefix"rdf";sh:namespace"http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI],
+[sh:prefix"rdfs";sh:namespace"http://www.w3.org/2000/01/rdf-schema#"^^xsd:anyURI],
+[sh:prefix"owl";sh:namespace"http://www.w3.org/2002/07/owl#"^^xsd:anyURI],
+[sh:prefix"xsd";sh:namespace"http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI],
+[sh:prefix"";sh:namespace"https://www.swansea.ac.uk/law/aiandlawapplication/kuuku/gasoil2#"^^xsd:anyURI]];
+sh:construct """
+CONSTRUCT 
+{
+?x :gh_ml_emp ?gh_ml_emp.
+}
+{
+SELECT ?x (count(?y) as ?gh_ml_emp)
+WHERE
+{
+?x rdf:type :SectorCompany.
+?x :employ ?y.
+?y rdf:type :MiddleLevelEmployee.
+?y :is :ghanaian.
+}
+GROUP BY ?x
+}
+""";
+];
+#the rule is similar to the above, but it finds the total number of employees who are middle level staff regardless of their nationality. It associate them with the company through the :ml_emp relation.
+sh:rule[ rdf:type sh:SPARQLRule; sh:order 0;
+sh:prefixes[sh:declare 
+[sh:prefix"rdf";sh:namespace"http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI],
+[sh:prefix"rdfs";sh:namespace"http://www.w3.org/2000/01/rdf-schema#"^^xsd:anyURI],
+[sh:prefix"owl";sh:namespace"http://www.w3.org/2002/07/owl#"^^xsd:anyURI],
+[sh:prefix"xsd";sh:namespace"http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI],
+[sh:prefix"";sh:namespace"https://www.swansea.ac.uk/law/aiandlawapplication/kuuku/gasoil2#"^^xsd:anyURI]];
+sh:construct """
+CONSTRUCT 
+{
+?x :ml_emp ?ml_emp.
+}
+{
+SELECT ?x (count(?y) as ?ml_emp)
+WHERE
+{
+?x rdf:type :SectorCompany.
+?x :employ ?y.
+?y rdf:type :MiddleLevelEmployee.
+}
+GROUP BY ?x
+}
+""";
+];
+#if there are companies not associated with any number via :gh_ml_emp, this rule associate them with zero (note that sh:order is 1 while for the previous rules it was 0)
+sh:rule[ rdf:type sh:SPARQLRule; sh:order 1;
+sh:prefixes[sh:declare 
+[sh:prefix"rdf";sh:namespace"http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI],
+[sh:prefix"rdfs";sh:namespace"http://www.w3.org/2000/01/rdf-schema#"^^xsd:anyURI],
+[sh:prefix"owl";sh:namespace"http://www.w3.org/2002/07/owl#"^^xsd:anyURI],
+[sh:prefix"xsd";sh:namespace"http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI],
+[sh:prefix"";sh:namespace"https://www.swansea.ac.uk/law/aiandlawapplication/kuuku/gasoil2#"^^xsd:anyURI]];
+sh:construct """
+CONSTRUCT 
+{
+?x :gh_ml_emp 0.
+}
+WHERE
+{
+?x rdf:type :SectorCompany.
+NOT EXISTS{?x :gh_ml_emp ?y}.
+}
+""";
+];
+#all companies which number of employees who are middle level staff from Ghana is inferior to 100 % of the total number of employees who are middle level staff are "nc_gh_ml_emp" (note that sh:order of this rule is 2)
+sh:rule[ rdf:type sh:SPARQLRule; sh:order 2;
+sh:prefixes[sh:declare 
+[sh:prefix"rdf";sh:namespace"http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI],
+[sh:prefix"rdfs";sh:namespace"http://www.w3.org/2000/01/rdf-schema#"^^xsd:anyURI],
+[sh:prefix"owl";sh:namespace"http://www.w3.org/2002/07/owl#"^^xsd:anyURI],
+[sh:prefix"xsd";sh:namespace"http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI],
+[sh:prefix"";sh:namespace"https://www.swansea.ac.uk/law/aiandlawapplication/kuuku/gasoil2#"^^xsd:anyURI]];
+sh:construct """
+CONSTRUCT 
+{
+?x rdf:type :Nc_Gh_ML_Emp.
+}
+WHERE
+{
+?x rdf:type :SectorCompany.
+?x :gh_ml_emp ?gh_ml_emp.
+?x :ml_emp ?ml_emp.
+FILTER(?gh_ml_emp<(?ml_emp*1.0)).
+}
+""";
+];
+#all companies which number of employees who are middle level staff from Ghana is greater or equal to 100  % of the total number of employees who are middle level staff are "c_gh_ml_emp" (note that sh:order of this rule is 3)
+sh:rule[ rdf:type sh:SPARQLRule; sh:order 3;
+sh:prefixes[sh:declare 
+[sh:prefix"rdf";sh:namespace"http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI],
+[sh:prefix"rdfs";sh:namespace"http://www.w3.org/2000/01/rdf-schema#"^^xsd:anyURI],
+[sh:prefix"owl";sh:namespace"http://www.w3.org/2002/07/owl#"^^xsd:anyURI],
+[sh:prefix"xsd";sh:namespace"http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI],
+[sh:prefix"";sh:namespace"https://www.swansea.ac.uk/law/aiandlawapplication/kuuku/gasoil2#"^^xsd:anyURI]];
+sh:construct """
+CONSTRUCT 
+{
+?x rdf:type :C_Gh_ML_Emp.
+}
+WHERE
+{
+?x rdf:type :SectorCompany.
+?x :gh_ml_emp ?gh_ml_emp.
+?x :ml_emp ?ml_emp.
+FILTER(?gh_ml_emp>=(?ml_emp*1.0)).
+}
+""";
+];
+
+sh:targetClass rdfs:Class.
+
+#for juniour level employees.
+
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix : <https://www.swansea.ac.uk/law/aiandlawapplication/kuuku/gasoil2#>.
+
+:allRules rdf:type sh:NodeShape;
+#find the number of ghanaian employees who are juniour level staff and associate them with the company with a new relation ":gh_jl_emp"
+sh:rule[ rdf:type sh:SPARQLRule; sh:order 0;
+sh:prefixes[sh:declare 
+[sh:prefix"rdf";sh:namespace"http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI],
+[sh:prefix"rdfs";sh:namespace"http://www.w3.org/2000/01/rdf-schema#"^^xsd:anyURI],
+[sh:prefix"owl";sh:namespace"http://www.w3.org/2002/07/owl#"^^xsd:anyURI],
+[sh:prefix"xsd";sh:namespace"http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI],
+[sh:prefix"";sh:namespace"https://www.swansea.ac.uk/law/aiandlawapplication/kuuku/gasoil2#"^^xsd:anyURI]];
+sh:construct """
+CONSTRUCT 
+{
+?x :gh_jl_emp ?gh_jl_emp.
+}
+{
+SELECT ?x (count(?y) as ?gh_jl_emp)
+WHERE
+{
+?x rdf:type :SectorCompany.
+?x :employ ?y.
+?y rdf:type :JuniourLevelEmployee.
+?y :is :ghanaian.
+}
+GROUP BY ?x
+}
+""";
+];
+#the rule is similar to the above, but it finds the total number of employees who are juniour level staff regardless of their nationality. It associate them with the company through the :jl_emp relation.
+sh:rule[ rdf:type sh:SPARQLRule; sh:order 0;
+sh:prefixes[sh:declare 
+[sh:prefix"rdf";sh:namespace"http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI],
+[sh:prefix"rdfs";sh:namespace"http://www.w3.org/2000/01/rdf-schema#"^^xsd:anyURI],
+[sh:prefix"owl";sh:namespace"http://www.w3.org/2002/07/owl#"^^xsd:anyURI],
+[sh:prefix"xsd";sh:namespace"http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI],
+[sh:prefix"";sh:namespace"https://www.swansea.ac.uk/law/aiandlawapplication/kuuku/gasoil2#"^^xsd:anyURI]];
+sh:construct """
+CONSTRUCT 
+{
+?x :jl_emp ?jl_emp.
+}
+{
+SELECT ?x (count(?y) as ?jl_emp)
+WHERE
+{
+?x rdf:type :SectorCompany.
+?x :employ ?y.
+?y rdf:type :JuniourLevelEmployee.
+}
+GROUP BY ?x
+}
+""";
+];
+#if there are companies not associated with any number via :gh_jl_emp, this rule associate them with zero (note that sh:order is 1 while for the previous rules it was 0)
+sh:rule[ rdf:type sh:SPARQLRule; sh:order 1;
+sh:prefixes[sh:declare 
+[sh:prefix"rdf";sh:namespace"http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI],
+[sh:prefix"rdfs";sh:namespace"http://www.w3.org/2000/01/rdf-schema#"^^xsd:anyURI],
+[sh:prefix"owl";sh:namespace"http://www.w3.org/2002/07/owl#"^^xsd:anyURI],
+[sh:prefix"xsd";sh:namespace"http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI],
+[sh:prefix"";sh:namespace"https://www.swansea.ac.uk/law/aiandlawapplication/kuuku/gasoil2#"^^xsd:anyURI]];
+sh:construct """
+CONSTRUCT 
+{
+?x :gh_jl_emp 0.
+}
+WHERE
+{
+?x rdf:type :SectorCompany.
+NOT EXISTS{?x :gh_jl_emp ?y}.
+}
+""";
+];
+#all companies whose number of employees who are juniour level staff from Ghana is inferior to 100 % of the total number of employees who are juniour level staff are "nc_gh_jl_emp" (note that sh:order of this rule is 2)
+sh:rule[ rdf:type sh:SPARQLRule; sh:order 2;
+sh:prefixes[sh:declare 
+[sh:prefix"rdf";sh:namespace"http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI],
+[sh:prefix"rdfs";sh:namespace"http://www.w3.org/2000/01/rdf-schema#"^^xsd:anyURI],
+[sh:prefix"owl";sh:namespace"http://www.w3.org/2002/07/owl#"^^xsd:anyURI],
+[sh:prefix"xsd";sh:namespace"http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI],
+[sh:prefix"";sh:namespace"https://www.swansea.ac.uk/law/aiandlawapplication/kuuku/gasoil2#"^^xsd:anyURI]];
+sh:construct """
+CONSTRUCT 
+{
+?x rdf:type :Nc_Gh_JL_Emp.
+}
+WHERE
+{
+?x rdf:type :SectorCompany.
+?x :gh_jl_emp ?gh_jl_emp.
+?x :jl_emp ?jl_emp.
+FILTER(?gh_jl_emp<(?jl_emp*1.0)).
+}
+""";
+];
+#all companies which number of employees who are juniour level staff from Ghana is greater or equal to 100  % of the total number of employees who are juniour level staff are "c_gh_jl_emp" (note that sh:order of this rule is 3)
+sh:rule[ rdf:type sh:SPARQLRule; sh:order 3;
+sh:prefixes[sh:declare 
+[sh:prefix"rdf";sh:namespace"http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI],
+[sh:prefix"rdfs";sh:namespace"http://www.w3.org/2000/01/rdf-schema#"^^xsd:anyURI],
+[sh:prefix"owl";sh:namespace"http://www.w3.org/2002/07/owl#"^^xsd:anyURI],
+[sh:prefix"xsd";sh:namespace"http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI],
+[sh:prefix"";sh:namespace"https://www.swansea.ac.uk/law/aiandlawapplication/kuuku/gasoil2#"^^xsd:anyURI]];
+sh:construct """
+CONSTRUCT 
+{
+?x rdf:type :C_Gh_JL_Emp.
+}
+WHERE
+{
+?x rdf:type :SectorCompany.
+?x :gh_jl_emp ?gh_jl_emp.
+?x :jl_emp ?jl_emp.
+FILTER(?gh_jl_emp>=(?jl_emp*1.0)).
+}
+""";
+];
+
+sh:targetClass rdfs:Class.
+
+
+
+
+@prefix owl: <http://www.w3.org/2002/07/owl#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix : <https://www.swansea.ac.uk/law/aiandlawapplication/kuuku/gasoil2#>.
+
+:allRules rdf:type sh:NodeShape;
+#creating a class of compliant companies, where companies have complied with all the regulations outlined in the various legislations.
+sh:rule[ rdf:type sh:SPARQLRule; sh:order 4;
+sh:prefixes[sh:declare 
+[sh:prefix"rdf";sh:namespace"http://www.w3.org/1999/02/22-rdf-syntax-ns#"^^xsd:anyURI],
+[sh:prefix"rdfs";sh:namespace"http://www.w3.org/2000/01/rdf-schema#"^^xsd:anyURI],
+[sh:prefix"owl";sh:namespace"http://www.w3.org/2002/07/owl#"^^xsd:anyURI],
+[sh:prefix"xsd";sh:namespace"http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI],
+[sh:prefix"";sh:namespace"https://www.swansea.ac.uk/law/aiandlawapplication/kuuku/gasoil2#"^^xsd:anyURI]];
+sh:construct """
+CONSTRUCT 
+{
+:ComplantSectorCompany rdf:type rdfs:Class.
+:ComplantSectorCompany rdfs:subClassOf :SectorCompany.
+?x rdf:type :ComplantSectorCompany.
+}
+WHERE 
+{
+?x rdf:type :EnergyActComplantSectorCompany.
+?x rdf:type :LFLCCompliantSectorCompany.
+?x rdf:type :BLCCompliantSectorCompany.
+?x rdf:type :C_Gh_Man_Emp.
+?x rdf:type :C_Gh_Tec_Emp.
+?x rdf:type :C_Gh_ML_Emp.
+?x rdf:type :C_Gh_JL_Emp.
+}
+""";
+];
+	
+sh:targetClass rdfs:Class.
+
