@@ -1,4 +1,4 @@
-This is the computational artefacts mentioned in the paper "Compliance checking in the energy domain via W3C standards", submitted to JURISIN 2023.
+This repository contains the computational artefact associated with the paper "Compliance checking in the energy domain via W3C standards", submitted to JURISIN 2023.
 
 To compile the file <i>infer.java</i>: 
 
