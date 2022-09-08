@@ -12,6 +12,7 @@ To run the file <i>infer.class</i>:
   java -cp .;./build/classes;./lib/spark/*;./lib/* infer
 </p>
 
+<br>
 <p align="align">
   The latter creates two new files: <i>inferredOntology.rdf</i> and <i>inferredTriples.rdf</i> containing the results of the SHACL-SPARQL queries.
 </p>
